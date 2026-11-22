@@ -1,0 +1,6 @@
+{
+  "name": "ReelCraft Studio",
+  "description": "Personal AI-powered video production studio for Instagram Reels, episodic animated stories, 3D anime, and cinematic scenes with character consistency and modular FastAPI/PostgreSQL architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

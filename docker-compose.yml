@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: reelcraft-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-reelcraft}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in backend/.env before starting}
+      POSTGRES_DB: ${POSTGRES_DB:-reelcraft_studio}
+    ports:
+      - "5432:5432"
+    volumes:
+      - reelcraft_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-reelcraft} -d ${POSTGRES_DB:-reelcraft_studio}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  reelcraft_pgdata:
